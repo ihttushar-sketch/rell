@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>rell — paste a reel, get everything</title>
+<meta name="description" content="Paste a Facebook or Instagram reel link and get every detail of that page plus one-click downloads in any quality." />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+
+<div class="bg-glow" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"></circle>
+        <circle cx="12" cy="12" r="2.4"></circle>
+        <path d="M12 3v3.2M12 17.8V21M3 12h3.2M17.8 12H21M5.6 5.6l2.3 2.3M16.1 16.1l2.3 2.3M18.4 5.6l-2.3 2.3M7.9 16.1l-2.3 2.3"></path>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <h1>rell</h1>
+      <p data-i18n="tagline">paste a reel · get the whole page</p>
+    </div>
+  </div>
+
+  <div class="topbar-actions">
+    <span id="statusPill" class="pill pill-muted" title="Engine status">
+      <span class="dot"></span><span id="statusText">checking…</span>
+    </span>
+    <button class="btn btn-ghost btn-sm" id="btnLibrary" data-i18n="library">Library</button>
+    <button class="btn btn-ghost btn-sm" id="btnCookies" data-i18n="cookies">Cookies</button>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="bn">বাংলা</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INPUT ============ -->
+  <section class="hero card">
+    <div class="hero-head">
+      <h2 data-i18n="heroTitle">Drop a video link</h2>
+      <div class="mode-switch" role="tablist">
+        <button class="mode-btn active" data-mode="single" role="tab" data-i18n="modeSingle">Single</button>
+        <button class="mode-btn" data-mode="batch" role="tab" data-i18n="modeBatch">Batch</button>
+      </div>
+    </div>
+
+    <form id="extractForm" class="input-row" autocomplete="off">
+      <div class="field">
+        <svg class="field-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+        <input id="urlInput" type="text" inputmode="url" spellcheck="false"
+               placeholder="https://www.facebook.com/reel/1402267498733776"
+               aria-label="Video link" />
+        <button type="button" class="icon-btn" id="btnPaste" title="Paste from clipboard" data-i18n-title="paste">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+        </button>
+      </div>
+      <button type="submit" class="btn btn-primary" id="btnExtract">
+        <span class="btn-label" data-i18n="extract">Extract</span>
+        <span class="spinner" hidden></span>
+      </button>
+    </form>
+
+    <div id="batchArea" class="batch-area" hidden>
+      <textarea id="batchInput" rows="5" spellcheck="false"
+        data-i18n-placeholder="batchPlaceholder"
+        placeholder="Paste as many links as you like — one per line (Facebook, Instagram, …)"></textarea>
+      <div class="batch-foot">
+        <span class="muted" id="batchCount" data-i18n="batchHint">Links are detected automatically.</span>
+        <button class="btn btn-ghost btn-sm" id="btnPasteBatch" data-i18n="paste">Paste</button>
+      </div>
+    </div>
+
+    <div class="chips" id="exampleChips">
+      <span class="muted chip-label" data-i18n="works">Works with</span>
+      <button class="chip" data-example="https://www.facebook.com/reel/1402267498733776">Facebook Reels</button>
+      <button class="chip" data-example="https://www.facebook.com/watch/?v=1402267498733776">Facebook Watch</button>
+      <button class="chip" data-example="https://www.instagram.com/reel/C1234abcd/">Instagram Reels</button>
+      <button class="chip" data-example="https://fb.watch/abcdef/">fb.watch</button>
+      <button class="chip chip-wide" data-example="" id="chipAny">+ 1000 more sites</button>
+    </div>
+  </section>
+
+  <!-- ============ LOADING ============ -->
+  <section id="loading" class="card loading" hidden>
+    <div class="loading-bar"><span></span></div>
+    <p id="loadingText" data-i18n="loading">Reading the page…</p>
+  </section>
+
+  <!-- ============ RESULT ============ -->
+  <section id="result" hidden>
+    <article class="card result-card">
+      <div class="result-top">
+        <div class="poster" id="poster">
+          <img id="thumb" alt="Video thumbnail" />
+          <span class="poster-badge" id="platformBadge">facebook</span>
+          <span class="poster-duration" id="durationBadge"></span>
+        </div>
+
+        <div class="result-meta">
+          <h3 id="title" class="result-title"></h3>
+          <div class="meta-line">
+            <a id="uploaderLink" class="uploader" target="_blank" rel="noopener noreferrer"></a>
+            <span class="muted" id="uploadDate"></span>
+          </div>
+
+          <div class="stats" id="stats"></div>
+
+          <div class="desc-block">
+            <p id="description" class="desc"></p>
+            <button class="link-btn" id="btnMore" hidden data-i18n="more">more</button>
+          </div>
+
+          <div class="tag-row" id="tags"></div>
+        </div>
+      </div>
+
+      <nav class="tabs" role="tablist">
+        <button class="tab active" data-tab="download" role="tab" data-i18n="tabDownload">Download</button>
+        <button class="tab" data-tab="formats" role="tab"><span data-i18n="tabFormats">Formats</span> <span class="tab-count" id="formatCount">0</span></button>
+        <button class="tab" data-tab="json" role="tab" data-i18n="tabJson">Raw data</button>
+      </nav>
+
+      <!-- download -->
+      <div class="tab-panel active" data-panel="download">
+        <div class="quality-grid" id="qualityGrid"></div>
+        <div class="extra-actions">
+          <button class="btn btn-ghost btn-sm" id="btnSaveServer" data-i18n="saveServer">Save to server</button>
+          <button class="btn btn-ghost btn-sm" id="btnThumbDl" data-i18n="dlThumb">Download thumbnail</button>
+          <button class="btn btn-ghost btn-sm" id="btnCopyLink" data-i18n="copyDirect">Copy direct video link</button>
+          <button class="btn btn-ghost btn-sm" id="btnOpenPage" data-i18n="openPage">Open original page</button>
+        </div>
+        <div class="job-progress" id="jobProgress" hidden>
+          <div class="job-head">
+            <span id="jobName"></span>
+            <span class="muted" id="jobStats"></span>
+          </div>
+          <div class="bar"><span id="jobBar"></span></div>
+        </div>
+      </div>
+
+      <!-- formats -->
+      <div class="tab-panel" data-panel="formats">
+        <div class="table-scroll">
+          <table class="fmt-table">
+            <thead>
+              <tr>
+                <th data-i18n="thId">ID</th>
+                <th data-i18n="thQuality">Quality</th>
+                <th data-i18n="thRes">Resolution</th>
+                <th data-i18n="thExt">Ext</th>
+                <th data-i18n="thVideo">Video</th>
+                <th data-i18n="thAudio">Audio</th>
+                <th data-i18n="thSize">Size</th>
+                <th data-i18n="thActions">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="formatBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- json -->
+      <div class="tab-panel" data-panel="json">
+        <div class="json-head">
+          <span class="muted" data-i18n="jsonNote">The complete unfiltered metadata yt-dlp read from the page.</span>
+          <div class="json-actions">
+            <button class="btn btn-ghost btn-sm" id="btnLoadRaw" data-i18n="loadRaw">Load raw dump</button>
+            <button class="btn btn-ghost btn-sm" id="btnCopyJson" data-i18n="copyJson">Copy</button>
+          </div>
+        </div>
+        <pre class="json-view" id="jsonView">—</pre>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ BATCH RESULTS ============ -->
+  <section id="batchResults" hidden>
+    <div class="section-head">
+      <h2 data-i18n="batchResults">Batch results</h2>
+      <div class="section-actions">
+        <span class="muted" id="batchSummary"></span>
+        <button class="btn btn-ghost btn-sm" id="btnDownloadAll" data-i18n="downloadAll">Download all (best)</button>
+      </div>
+    </div>
+    <div id="batchList" class="batch-list"></div>
+  </section>
+
+  <!-- ============ ERROR ============ -->
+  <section id="errorBox" class="card error-card" hidden>
+    <div class="error-icon">!</div>
+    <div>
+      <h3 id="errorTitle" data-i18n="errorTitle">Could not read that page</h3>
+      <p id="errorMessage" class="error-message"></p>
+      <p id="errorHint" class="error-hint" hidden></p>
+      <div class="error-actions">
+        <button class="btn btn-ghost btn-sm" id="btnErrorCookies" data-i18n="cookies">Cookies</button>
+        <button class="btn btn-ghost btn-sm" id="btnCopyError" data-i18n="copyError">Copy error</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HISTORY ============ -->
+  <section id="historySection" class="card" hidden>
+    <div class="section-head">
+      <h2 class="h-small" data-i18n="recent">Recent</h2>
+      <button class="link-btn" id="btnClearHistory" data-i18n="clearHistory">clear</button>
+    </div>
+    <div class="history-row" id="historyRow"></div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <span>rell <span id="footVersion"></span> · <span data-i18n="footNote">local &amp; private — nothing is uploaded anywhere</span></span>
+  <a href="/docs" target="_blank" rel="noopener">API docs</a>
+</footer>
+
+<!-- ============ LIBRARY DRAWER ============ -->
+<aside class="drawer" id="libraryDrawer" aria-hidden="true">
+  <div class="drawer-head">
+    <h3 data-i18n="libraryTitle">Saved files</h3>
+    <button class="icon-btn" id="btnCloseLibrary" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <p class="drawer-sub muted" id="libraryPath"></p>
+  <div class="drawer-body" id="libraryList"></div>
+</aside>
+<div class="scrim" id="scrim" hidden></div>
+
+<!-- ============ COOKIES MODAL ============ -->
+<div class="modal" id="cookieModal" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h3 data-i18n="cookieTitle">Cookies (for private / login-only reels)</h3>
+      <button class="icon-btn" id="btnCloseCookies" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p class="muted" data-i18n="cookieHelp">
+        Facebook and Instagram hide most reels behind a login. Paste a cookies.txt export
+        (or a raw <code>Cookie:</code> header) and rell will use it for every request.
+        It stays on this machine only.
+      </p>
+      <ol class="steps">
+        <li data-i18n="cookieStep1">Install the "Get cookies.txt LOCALLY" browser extension.</li>
+        <li data-i18n="cookieStep2">Open facebook.com or instagram.com while logged in, click the extension, Export.</li>
+        <li data-i18n="cookieStep3">Paste the file contents below, or upload the file.</li>
+      </ol>
+      <textarea id="cookieText" rows="7" spellcheck="false" placeholder="# Netscape HTTP Cookie File"></textarea>
+      <div class="modal-actions">
+        <label class="btn btn-ghost btn-sm">
+          <span data-i18n="uploadFile">Upload file</span>
+          <input type="file" id="cookieFile" accept=".txt,text/plain" hidden />
+        </label>
+        <span class="grow"></span>
+        <button class="btn btn-ghost btn-sm btn-danger" id="btnDeleteCookies" data-i18n="deleteCookies">Delete</button>
+        <button class="btn btn-primary btn-sm" id="btnSaveCookies" data-i18n="saveCookies">Save cookies</button>
+      </div>
+      <p class="cookie-status muted" id="cookieStatus"></p>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
