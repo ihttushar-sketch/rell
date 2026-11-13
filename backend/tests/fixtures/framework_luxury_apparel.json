@@ -1,0 +1,1089 @@
+{
+  "schema_version": "1.0",
+  "id": "fw_luxury_apparel",
+  "framework_name": "Luxury Apparel Cut",
+  "description": "Fashion-film cadence: 0.8s beats, snap pans, desaturated silver grade, hard cuts on the downbeat. Watermark locked top-left.",
+  "tags": [
+    "luxury",
+    "fashion",
+    "product",
+    "9:16"
+  ],
+  "created_at": "2026-01-12T09:00:00.000Z",
+  "origin": "server",
+  "source": {
+    "kind": "template",
+    "label": "template:luxury-apparel-reference.mp4",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "aspect": "9:16"
+  },
+  "duration_sec": 24,
+  "audio": {
+    "bpm": 104,
+    "beat_timestamps": [
+      0,
+      0.5769,
+      1.1538,
+      1.7308,
+      2.3077,
+      2.8846,
+      3.4615,
+      4.0385,
+      4.6154,
+      5.1923,
+      5.7692,
+      6.3462,
+      6.9231,
+      7.5,
+      8.0769,
+      8.6538,
+      9.2308,
+      9.8077,
+      10.3846,
+      10.9615,
+      11.5385,
+      12.1154,
+      12.6923,
+      13.2692,
+      13.8462,
+      14.4231,
+      15,
+      15.5769,
+      16.1538,
+      16.7308,
+      17.3077,
+      17.8846,
+      18.4615,
+      19.0385,
+      19.6154,
+      20.1923,
+      20.7692,
+      21.3462,
+      21.9231,
+      22.5,
+      23.0769,
+      23.6538
+    ],
+    "downbeats": [
+      0,
+      2.3077,
+      4.6154,
+      6.9231,
+      9.2308,
+      11.5385,
+      13.8462,
+      16.1538,
+      18.4615,
+      20.7692,
+      23.0769
+    ],
+    "lufs": -14,
+    "stems": {
+      "vocals": null,
+      "bgm": null,
+      "sfx": null
+    },
+    "preview_only": true
+  },
+  "shots": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 0.774,
+      "duration": 0.774,
+      "motion": "pan_right",
+      "motion_energy": 0.49,
+      "sharpness": 0.67,
+      "transition": "cut",
+      "effects": [
+        "silver_grade"
+      ],
+      "pillar": 1,
+      "grade": {
+        "brightness": 0.01,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 1,
+      "start": 0.774,
+      "end": 1.644,
+      "duration": 0.869,
+      "motion": "zoom_out",
+      "motion_energy": 0.58,
+      "sharpness": 0.75,
+      "transition": "cut",
+      "effects": [
+        "silver_grade"
+      ],
+      "pillar": 1,
+      "grade": {
+        "brightness": 0.028,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 2,
+      "start": 1.644,
+      "end": 2.142,
+      "duration": 0.499,
+      "motion": "pan_left",
+      "motion_energy": 0.86,
+      "sharpness": 0.83,
+      "transition": "whip",
+      "effects": [
+        "silver_grade"
+      ],
+      "pillar": 1,
+      "grade": {
+        "brightness": 0.038,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 3,
+      "start": 2.142,
+      "end": 3.091,
+      "duration": 0.949,
+      "motion": "zoom_in",
+      "motion_energy": 0.93,
+      "sharpness": 0.82,
+      "transition": "cut",
+      "effects": [
+        "silver_grade"
+      ],
+      "pillar": 1,
+      "grade": {
+        "brightness": 0.015,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 4,
+      "start": 3.091,
+      "end": 3.745,
+      "duration": 0.654,
+      "motion": "static",
+      "motion_energy": 0.74,
+      "sharpness": 0.8,
+      "transition": "fade",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 1,
+      "grade": {
+        "brightness": 0.003,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 5,
+      "start": 3.745,
+      "end": 4.505,
+      "duration": 0.76,
+      "motion": "pan_right",
+      "motion_energy": 0.43,
+      "sharpness": 0.89,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 2,
+      "grade": {
+        "brightness": 0.013,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 6,
+      "start": 4.505,
+      "end": 4.977,
+      "duration": 0.472,
+      "motion": "pan_right",
+      "motion_energy": 0.35,
+      "sharpness": 0.86,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 2,
+      "grade": {
+        "brightness": 0.035,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 7,
+      "start": 4.977,
+      "end": 5.762,
+      "duration": 0.785,
+      "motion": "zoom_out",
+      "motion_energy": 0.94,
+      "sharpness": 0.63,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 2,
+      "grade": {
+        "brightness": 0,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 8,
+      "start": 5.762,
+      "end": 6.566,
+      "duration": 0.805,
+      "motion": "pan_left",
+      "motion_energy": 0.71,
+      "sharpness": 0.91,
+      "transition": "whip",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 2,
+      "grade": {
+        "brightness": 0.019,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 9,
+      "start": 6.566,
+      "end": 7.456,
+      "duration": 0.89,
+      "motion": "zoom_in",
+      "motion_energy": 0.6,
+      "sharpness": 0.62,
+      "transition": "cut",
+      "effects": [
+        "silver_grade"
+      ],
+      "pillar": 2,
+      "grade": {
+        "brightness": 0.018,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 10,
+      "start": 7.456,
+      "end": 7.959,
+      "duration": 0.503,
+      "motion": "static",
+      "motion_energy": 0.87,
+      "sharpness": 0.96,
+      "transition": "fade",
+      "effects": [
+        "silver_grade"
+      ],
+      "pillar": 3,
+      "grade": {
+        "brightness": 0.01,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 11,
+      "start": 7.959,
+      "end": 8.92,
+      "duration": 0.961,
+      "motion": "pan_right",
+      "motion_energy": 0.43,
+      "sharpness": 0.78,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 3,
+      "grade": {
+        "brightness": 0.017,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 12,
+      "start": 8.92,
+      "end": 9.597,
+      "duration": 0.677,
+      "motion": "pan_right",
+      "motion_energy": 0.78,
+      "sharpness": 0.7,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 3,
+      "grade": {
+        "brightness": 0.029,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 13,
+      "start": 9.597,
+      "end": 10.294,
+      "duration": 0.697,
+      "motion": "zoom_out",
+      "motion_energy": 0.47,
+      "sharpness": 0.78,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 3,
+      "grade": {
+        "brightness": 0.002,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 14,
+      "start": 10.294,
+      "end": 10.741,
+      "duration": 0.447,
+      "motion": "pan_left",
+      "motion_energy": 0.51,
+      "sharpness": 0.74,
+      "transition": "whip",
+      "effects": [
+        "silver_grade"
+      ],
+      "pillar": 3,
+      "grade": {
+        "brightness": 0.028,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 15,
+      "start": 10.741,
+      "end": 11.51,
+      "duration": 0.769,
+      "motion": "zoom_in",
+      "motion_energy": 0.85,
+      "sharpness": 0.69,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 3,
+      "grade": {
+        "brightness": 0.023,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 16,
+      "start": 11.51,
+      "end": 12.26,
+      "duration": 0.75,
+      "motion": "static",
+      "motion_energy": 0.66,
+      "sharpness": 0.96,
+      "transition": "fade",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 3,
+      "grade": {
+        "brightness": 0.008,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 17,
+      "start": 12.26,
+      "end": 13.126,
+      "duration": 0.866,
+      "motion": "pan_right",
+      "motion_energy": 0.78,
+      "sharpness": 0.79,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 3,
+      "grade": {
+        "brightness": 0.038,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 18,
+      "start": 13.126,
+      "end": 13.631,
+      "duration": 0.505,
+      "motion": "pan_right",
+      "motion_energy": 0.83,
+      "sharpness": 0.68,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 3,
+      "grade": {
+        "brightness": 0.009,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 19,
+      "start": 13.631,
+      "end": 14.573,
+      "duration": 0.942,
+      "motion": "zoom_out",
+      "motion_energy": 0.63,
+      "sharpness": 0.75,
+      "transition": "cut",
+      "effects": [
+        "silver_grade"
+      ],
+      "pillar": 3,
+      "grade": {
+        "brightness": 0.006,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 20,
+      "start": 14.573,
+      "end": 15.241,
+      "duration": 0.667,
+      "motion": "pan_left",
+      "motion_energy": 0.92,
+      "sharpness": 0.74,
+      "transition": "whip",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 3,
+      "grade": {
+        "brightness": 0.014,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 21,
+      "start": 15.241,
+      "end": 15.938,
+      "duration": 0.697,
+      "motion": "zoom_in",
+      "motion_energy": 0.37,
+      "sharpness": 0.78,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 3,
+      "grade": {
+        "brightness": 0.016,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 22,
+      "start": 15.938,
+      "end": 16.372,
+      "duration": 0.434,
+      "motion": "static",
+      "motion_energy": 0.44,
+      "sharpness": 0.88,
+      "transition": "fade",
+      "effects": [
+        "silver_grade"
+      ],
+      "pillar": 3,
+      "grade": {
+        "brightness": 0.027,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 23,
+      "start": 16.372,
+      "end": 17.22,
+      "duration": 0.848,
+      "motion": "pan_right",
+      "motion_energy": 0.62,
+      "sharpness": 0.63,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 3,
+      "grade": {
+        "brightness": 0.006,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 24,
+      "start": 17.22,
+      "end": 18.042,
+      "duration": 0.822,
+      "motion": "pan_right",
+      "motion_energy": 0.7,
+      "sharpness": 0.77,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 4,
+      "grade": {
+        "brightness": 0.023,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 25,
+      "start": 18.042,
+      "end": 18.91,
+      "duration": 0.868,
+      "motion": "zoom_out",
+      "motion_energy": 0.66,
+      "sharpness": 0.66,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 4,
+      "grade": {
+        "brightness": 0.003,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 26,
+      "start": 18.91,
+      "end": 19.45,
+      "duration": 0.54,
+      "motion": "pan_left",
+      "motion_energy": 0.78,
+      "sharpness": 0.77,
+      "transition": "whip",
+      "effects": [
+        "silver_grade"
+      ],
+      "pillar": 4,
+      "grade": {
+        "brightness": 0.014,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 27,
+      "start": 19.45,
+      "end": 20.355,
+      "duration": 0.905,
+      "motion": "zoom_in",
+      "motion_energy": 0.4,
+      "sharpness": 0.81,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 4,
+      "grade": {
+        "brightness": 0.03,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 28,
+      "start": 20.355,
+      "end": 20.998,
+      "duration": 0.643,
+      "motion": "static",
+      "motion_energy": 0.4,
+      "sharpness": 0.63,
+      "transition": "fade",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 5,
+      "grade": {
+        "brightness": 0.006,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 29,
+      "start": 20.998,
+      "end": 21.729,
+      "duration": 0.731,
+      "motion": "pan_right",
+      "motion_energy": 0.68,
+      "sharpness": 0.74,
+      "transition": "cut",
+      "effects": [
+        "silver_grade"
+      ],
+      "pillar": 5,
+      "grade": {
+        "brightness": 0.036,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 30,
+      "start": 21.729,
+      "end": 22.201,
+      "duration": 0.472,
+      "motion": "pan_right",
+      "motion_energy": 0.65,
+      "sharpness": 0.79,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 5,
+      "grade": {
+        "brightness": 0.012,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 31,
+      "start": 22.201,
+      "end": 22.978,
+      "duration": 0.776,
+      "motion": "zoom_out",
+      "motion_energy": 0.58,
+      "sharpness": 0.78,
+      "transition": "cut",
+      "effects": [
+        "silver_grade"
+      ],
+      "pillar": 5,
+      "grade": {
+        "brightness": 0.034,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 32,
+      "start": 22.978,
+      "end": 23.802,
+      "duration": 0.825,
+      "motion": "pan_left",
+      "motion_energy": 0.77,
+      "sharpness": 0.68,
+      "transition": "whip",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 5,
+      "grade": {
+        "brightness": 0.002,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    },
+    {
+      "index": 33,
+      "start": 23.802,
+      "end": 24,
+      "duration": 0.198,
+      "motion": "zoom_in",
+      "motion_energy": 0.43,
+      "sharpness": 0.83,
+      "transition": "cut",
+      "effects": [
+        "punch_in",
+        "silver_grade"
+      ],
+      "pillar": 5,
+      "grade": {
+        "brightness": 0.03,
+        "contrast": 1.1,
+        "saturation": 0.62,
+        "vignette": 0.38,
+        "temperature": -0.22
+      },
+      "palette": [
+        "#0D0F12",
+        "#21262D",
+        "#8B949E"
+      ]
+    }
+  ],
+  "pillars": [
+    {
+      "pillar": 1,
+      "name": "Viral Hook",
+      "start": 0,
+      "end": 3.745,
+      "shot_count": 5
+    },
+    {
+      "pillar": 2,
+      "name": "Real Pain Point",
+      "start": 3.745,
+      "end": 7.456,
+      "shot_count": 5
+    },
+    {
+      "pillar": 3,
+      "name": "Interest & Sales Trigger",
+      "start": 7.456,
+      "end": 17.22,
+      "shot_count": 14
+    },
+    {
+      "pillar": 4,
+      "name": "Intent to Comment",
+      "start": 17.22,
+      "end": 20.355,
+      "shot_count": 4
+    },
+    {
+      "pillar": 5,
+      "name": "Motion Graphic Cues",
+      "start": 20.355,
+      "end": 24,
+      "shot_count": 6
+    }
+  ],
+  "rhythm": {
+    "avg_shot_sec": 0.706,
+    "cut_density": 1.417,
+    "phase_ratios": {
+      "hook": 0.14,
+      "pain": 0.14,
+      "trigger": 0.42,
+      "comment": 0.14,
+      "outro": 0.16
+    }
+  },
+  "grade": {
+    "brightness": 0.02,
+    "contrast": 1.1,
+    "saturation": 0.62,
+    "vignette": 0.38,
+    "temperature": -0.22
+  },
+  "sfx_events": [
+    {
+      "t": 3.6,
+      "type": "whoosh",
+      "gain": -13
+    },
+    {
+      "t": 8.9,
+      "type": "click",
+      "gain": -16
+    },
+    {
+      "t": 15.2,
+      "type": "whoosh",
+      "gain": -12
+    },
+    {
+      "t": 20.4,
+      "type": "hit",
+      "gain": -14
+    }
+  ],
+  "watermark": {
+    "text": "NEXUS FRAME",
+    "position": "top-left",
+    "x": 24,
+    "y": 24,
+    "color": "#E6EDF3",
+    "opacity": 0.72
+  },
+  "stats": {
+    "cuts": 34,
+    "avg_clip_duration": 0.706,
+    "zoom_ratio": 0.35,
+    "motion_energy": 0.64
+  }
+}

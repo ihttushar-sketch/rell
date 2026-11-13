@@ -1,0 +1,5 @@
+# Optional deep-learning stack — installs on top of requirements.txt.
+# The node detects these at runtime and degrades gracefully without them.
+torch>=2.2
+demucs==4.0.1
+mediapipe==0.10.18
