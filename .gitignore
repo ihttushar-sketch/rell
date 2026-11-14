@@ -1,0 +1,22 @@
+# deps
+node_modules/
+frontend/.next/
+frontend/out/
+frontend/next-env.d.ts
+frontend/tsconfig.tsbuildinfo
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# runtime data (heavy media never belongs in git)
+backend/data/
+backend/.cache/
+*.log
+.DS_Store
+.env
+.env.local

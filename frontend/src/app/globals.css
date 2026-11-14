@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --ink: #0d0f12;
+  --panel: #161b22;
+  --stroke: #21262d;
+}
+
+html,
+body {
+  background-color: #0d0f12;
+  color: #e6edf3;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "cv11", "ss01";
+}
+
+::selection {
+  background: rgba(230, 237, 243, 0.18);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #30363d transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #2b3139;
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #3a424c;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-xl border border-stroke bg-panel/70 shadow-panel;
+  }
+  .panel-head {
+    @apply flex items-center justify-between gap-3 border-b border-stroke/80 px-5 py-3.5;
+  }
+  .eyebrow {
+    @apply font-mono text-[10px] uppercase tracking-[0.24em] text-muted;
+  }
+  .input {
+    @apply w-full rounded-lg border border-stroke bg-ink/80 px-3.5 py-2.5 text-sm text-paper outline-none transition placeholder:text-muted/50 focus:border-silver/40 focus:ring-1 focus:ring-silver/20 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-lg border px-3.5 py-2 text-[13px] font-medium transition active:translate-y-[0.5px] disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-primary {
+    @apply border-paper/20 bg-paper text-ink hover:bg-white;
+  }
+  .btn-silver {
+    @apply border-silver/25 bg-silver/10 text-paper hover:border-silver/45 hover:bg-silver/15;
+  }
+  .btn-ghost {
+    @apply border-stroke bg-transparent text-silver hover:border-silver/30 hover:bg-white/[0.03] hover:text-paper;
+  }
+  .btn-danger {
+    @apply border-red-900/60 bg-red-950/30 text-red-300 hover:border-red-800 hover:bg-red-950/50;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-md border border-stroke bg-ink/60 px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-muted;
+  }
+  .hairline {
+    @apply h-px w-full bg-stroke/80;
+  }
+  .grid-stage {
+    background-image: linear-gradient(rgba(230, 237, 243, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(230, 237, 243, 0.035) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-silver/50;
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.3; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1); }
+}
+.dot-live {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}

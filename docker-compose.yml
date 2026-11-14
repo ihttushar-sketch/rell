@@ -1,0 +1,63 @@
+# NEXUS FRAME — one command to run the full production house.
+#   docker compose up --build          CPU node
+#   docker compose --profile ml up     + Demucs/librosa stack (large image)
+services:
+  node:
+    build:
+      context: ./backend
+      args:
+        INSTALL_ML: "0"
+    ports:
+      - "8000:8000"
+    environment:
+      NEXUS_RENDER_MAX_DIM: "1280"
+      NEXUS_RENDER_PRESET: "veryfast"
+      NEXUS_MAX_TARGET_SEC: "1800"
+      NEXUS_YTDLP: "on"
+      NEXUS_HWACCEL: "auto"
+      # Optional qualitative pass
+      NEXUS_VISION_PROVIDER: "${NEXUS_VISION_PROVIDER:-off}"
+      NEXUS_VISION_API_KEY: "${NEXUS_VISION_API_KEY:-}"
+    volumes:
+      - nexus-data:/data
+    restart: unless-stopped
+
+  ml-node:
+    profiles: ["ml"]
+    build:
+      context: ./backend
+      args:
+        INSTALL_ML: "1"
+    ports:
+      - "8001:8000"
+    environment:
+      NEXUS_RENDER_MAX_DIM: "1920"
+      NEXUS_RENDER_PRESET: "medium"
+    volumes:
+      - nexus-data-ml:/data
+    restart: unless-stopped
+
+  studio:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      NEXUS_BACKEND_URL: "http://node:8000"
+    depends_on:
+      - node
+    restart: unless-stopped
+
+  studio-ml:
+    profiles: ["ml"]
+    build: ./frontend
+    ports:
+      - "3001:3000"
+    environment:
+      NEXUS_BACKEND_URL: "http://ml-node:8000"
+    depends_on:
+      - ml-node
+    restart: unless-stopped
+
+volumes:
+  nexus-data:
+  nexus-data-ml:
