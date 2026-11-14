@@ -8,8 +8,19 @@ import type { NextConfig } from "next";
  */
 const BACKEND = process.env.NEXUS_BACKEND_URL ?? "http://127.0.0.1:8000";
 
+/**
+ * Next clones/buffers proxied request bodies and caps them at 10 MB by default.
+ * Raw footage is routinely larger than that, so the cap is raised to match the
+ * node's own upload ceiling (NEXUS_MAX_UPLOAD_MB, 512 MB by default). Without
+ * this, any /api/analyze or /api/produce upload above 10 MB is truncated and the
+ * proxy aborts with "socket hang up" (HTTP 500).
+ */
+type ProxyBodyLimit = NonNullable<NextConfig["experimental"]>["middlewareClientMaxBodySize"];
+const MAX_PROXY_BODY = (process.env.NEXUS_STUDIO_MAX_UPLOAD ?? "512mb") as ProxyBodyLimit;
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  experimental: { middlewareClientMaxBodySize: MAX_PROXY_BODY },
   allowedDevOrigins: ["*.e2b.app", "localhost", "127.0.0.1"],
   eslint: { ignoreDuringBuilds: true },
   async rewrites() {
