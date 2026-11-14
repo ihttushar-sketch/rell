@@ -145,7 +145,8 @@ Full reference: [`docs/API.md`](docs/API.md).
 ## Testing
 
 ```bash
-./scripts/test.sh
+./scripts/test.sh          # TS engine + Python node + cross-engine parity
+cd frontend && npm run check:hydration   # SSR/client markup must match
 ```
 
 - **TypeScript (11 tests)** — duration parsing, exact totals, monotonic cuts, minimum slot length, all five pillars present, beat snapping, determinism, SFX preservation, hook starvation guard, template integrity.

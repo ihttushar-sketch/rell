@@ -67,6 +67,7 @@ Copy `.env.example` to `.env` for compose.
 | URL ingestion fails | yt-dlp blocked, `NEXUS_YTDLP=off`, or the platform needs cookies. Download the file and upload it instead |
 | Browser render is silent on templates | Templates ship without copyrighted music. The studio synthesises a licence-free preview bed; upload a custom BGM for client work |
 | Studio returns **HTTP 500** and the node log shows no request at all (large uploads only) | Next's request proxy caps cloned bodies at 10 MB and aborts with `socket hang up`. `frontend/next.config.ts` raises it via `experimental.middlewareClientMaxBodySize` (env `NEXUS_STUDIO_MAX_UPLOAD`, default `512mb`) — restart the studio (`ctrl-c`, `npm run dev`) after changing it |
+| Console: **"A tree hydrated but some attributes … didn't match"** | Run `cd frontend && npm run check:hydration` — it server-renders the studio, hydrates the same tree in jsdom and fails on any diff, so a green run (0 problems, negative control ✓) means the app markup is deterministic. Then suspect the environment: a stale dev bundle after a rebuild (hard reload, `rm -rf frontend/.next`), or a browser extension that rewrites `<html>`/`<body>` before React loads (retest in a private window). `<html>`/`<body>` carry `suppressHydrationWarning` for that case; never add it to app components — fix the non-determinism instead |
 | `413` on upload | Raise `NEXUS_MAX_UPLOAD_MB` or trim the clip |
 | Video preview will not seek | The proxy must pass Range requests; the node already answers `206`. Check any intermediary proxy |
 

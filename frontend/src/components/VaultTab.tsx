@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 import { formatClock, formatDuration } from "@/lib/scaler";
+import { formatDate } from "@/lib/format";
 import { useStudio } from "@/lib/store";
 import { FrameworkDna } from "@/lib/types";
 import { Badge, Button, EmptyState, Panel, PanelHead, formatBytes } from "./ui";
@@ -137,7 +138,7 @@ export function VaultTab() {
                     <td className="px-4 py-3 font-mono text-[11px] text-silver">{dna.stats.avg_clip_duration.toFixed(2)}s</td>
                     <td className="px-4 py-3 font-mono text-[11px] text-muted">{dna.source.aspect}</td>
                     <td className="whitespace-nowrap px-4 py-3 font-mono text-[10.5px] text-muted">
-                      {new Date(dna.created_at).toLocaleDateString()}
+                      {formatDate(dna.created_at)}
                     </td>
                     <td className="px-3 py-3">
                       <div className="flex items-center justify-end gap-1 opacity-60 transition group-hover:opacity-100">
