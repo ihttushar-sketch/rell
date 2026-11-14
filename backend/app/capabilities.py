@@ -108,6 +108,7 @@ def snapshot() -> dict[str, Any]:
         notes.append("librosa missing: tempo tracking uses the built-in spectral-flux analyser")
     if not _module_available("yt_dlp"):
         notes.append("yt-dlp missing: remote URL ingestion disabled")
+    from . import remote as remote_module
     from .vision import status as vision_status
 
     vision = vision_status()
@@ -125,5 +126,6 @@ def snapshot() -> dict[str, Any]:
         "torch": _module_available("torch"),
         "hardware_accel": hardware_accel(),
         "vision": vision["provider"] if vision["enabled"] else None,
+        "ytdlp_version": remote_module.version(),
         "notes": notes,
     }

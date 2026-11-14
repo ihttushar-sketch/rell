@@ -187,6 +187,8 @@ export interface Capabilities {
   ffmpeg: boolean;
   ffprobe: boolean;
   ytdlp: boolean;
+  /** Installed yt-dlp release on the node (null when absent). */
+  ytdlp_version?: string | null;
   opencv: boolean;
   scenedetect: boolean;
   demucs: boolean;

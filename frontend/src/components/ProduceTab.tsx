@@ -110,7 +110,7 @@ function FrameworkCard({
 }
 
 export function ProduceTab() {
-  const { frameworks, selectedId, setSelected, engine, draft, referenceAudio, toast } = useStudio();
+  const { capabilities, frameworks, selectedId, setSelected, engine, draft, referenceAudio, toast } = useStudio();
   const framework = frameworks.find((f) => f.id === selectedId) ?? frameworks[0] ?? null;
 
   const [clips, setClips] = useState<File[]>([]);
@@ -453,7 +453,11 @@ export function ProduceTab() {
 
             <Field
               label="Clip URLs"
-              hint={engine === "server" ? "One per line · fetched by yt-dlp on the node." : "Requires the production node. Studio Lite uses local files."}
+              hint={
+                engine === "server"
+                  ? `One per line · fetched by yt-dlp${capabilities?.ytdlp_version ? ` ${capabilities.ytdlp_version}` : ""} on the node. If the node's network is filtered, upload the files instead.`
+                  : "Requires the production node. Studio Lite uses local files."
+              }
             >
               <div className="relative">
                 <Link2 size={13} className="pointer-events-none absolute left-3 top-3 text-muted" />

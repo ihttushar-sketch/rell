@@ -216,9 +216,15 @@ class JobManager:
                 result = runner(job)
                 job.succeed(result or {})
             except Exception as exc:  # noqa: BLE001 - surface any failure to the studio
-                logger.exception("job %s failed", job.id)
-                job.fail(str(exc))
-                job.log(traceback.format_exc(limit=4))
+                message = str(exc)
+                if isinstance(exc, RuntimeError):
+                    # Expected, already-humanised failures (blocked network, stale
+                    # yt-dlp, missing clip): a stack trace would bury the advice.
+                    logger.warning("job %s failed · %s", job.id, message)
+                else:
+                    logger.exception("job %s failed", job.id)
+                    job.log(traceback.format_exc(limit=4))
+                job.fail(message)
 
         self._pool.submit(execute)
         return job

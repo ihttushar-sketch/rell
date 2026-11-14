@@ -5,7 +5,7 @@ python-multipart==0.0.20
 numpy>=1.26,<3
 opencv-python-headless==4.10.0.84
 scenedetect==0.6.5
-yt-dlp==2024.12.23
+yt-dlp==2026.10.26
 # Beat tracking (numpy/scipy/numba only — no GPU required).
 librosa==0.10.2.post1
 # ffmpeg binary bundled from PyPI so the node works even without a system install.

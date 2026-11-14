@@ -160,7 +160,7 @@ cd frontend && npm run check:hydration   # SSR/client markup must match
 - **Studio Lite cannot isolate stems** — separation is a model task, not a DSP trick. It analyses/renders, then hands off to the node for client-grade stems.
 - **Browser export is realtime** (a 45 s edit takes ≈45 s to capture) and produces WebM. Use the node for MP4/FFmpeg renders.
 - **The hosted vision pass is optional** and off by default; numeric analysis never depends on it.
-- Remote URL ingestion requires network access from the *node* (yt-dlp + the platform itself), which may be blocked in restricted sandboxes.
+- Remote URL ingestion requires network access from the *node* (yt-dlp + the platform itself), which is often blocked in sandboxes and datacenters. Keep yt-dlp current (`pip install -U yt-dlp`), supply `NEXUS_YTDLP_COOKIES` for bot checks and `NEXUS_YTDLP_PROXY` behind a filtered network; otherwise upload the file — every other feature is unaffected.
 
 ---
 

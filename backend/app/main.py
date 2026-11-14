@@ -31,7 +31,7 @@ from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, Response, StreamingResponse
 
-from . import __version__, store
+from . import __version__, remote, store
 from .analyzer import analyze_reference
 from .capabilities import snapshot
 from .config import (
@@ -107,6 +107,13 @@ def download_remote(url: str, directory: Path, job: Job) -> Path:
     """Fetch a remote video with yt-dlp (YouTube, Shorts, Reels, TikTok, FB…)."""
     if not YTDLP_ENABLED:
         raise RuntimeError("Remote ingestion is disabled on this node (NEXUS_YTDLP=off)")
+    version = remote.version()
+    if not version:
+        raise RuntimeError("yt-dlp is not installed on this node — pip install yt-dlp, or upload the file instead")
+    warning = remote.staleness_warning()
+    if warning:
+        job.log(warning)
+
     try:
         import yt_dlp  # type: ignore
     except ImportError as exc:  # pragma: no cover - optional dependency
@@ -114,27 +121,23 @@ def download_remote(url: str, directory: Path, job: Job) -> Path:
 
     directory.mkdir(parents=True, exist_ok=True)
     template = str(directory / f"remote-{uuid.uuid4().hex[:10]}-%(id)s.%(ext)s")
-    options = {
-        "outtmpl": {"default": template},
-        "format": "bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b",
-        "merge_output_format": "mp4",
-        "noplaylist": True,
-        "quiet": True,
-        "no_warnings": True,
-        "restrictfilenames": True,
-        "socket_timeout": 30,
-        "retries": 2,
-    }
-    job.log(f"Resolving remote stream {url}")
-    with yt_dlp.YoutubeDL(options) as ydl:
-        info = ydl.extract_info(url, download=True)
-        if info is None:
-            raise RuntimeError("yt-dlp returned no media")
-        if "entries" in info:
-            info = next((entry for entry in info["entries"] if entry), None)
-            if not info:
-                raise RuntimeError("Playlist contained no downloadable entry")
-        path = Path(ydl.prepare_filename(info))
+    options = remote.base_options(template)
+    job.log(f"Resolving remote stream with yt-dlp {version} · {url}")
+    try:
+        with yt_dlp.YoutubeDL(options) as ydl:
+            info = ydl.extract_info(url, download=True)
+            if info is None:
+                raise RuntimeError("yt-dlp returned no media")
+            if "entries" in info:
+                info = next((entry for entry in info["entries"] if entry), None)
+                if not info:
+                    raise RuntimeError("Playlist contained no downloadable entry")
+            path = Path(ydl.prepare_filename(info))
+    except Exception as exc:  # noqa: BLE001 - every failure becomes an actionable message
+        message = remote.friendly_error(str(exc))
+        job.log(f"Remote fetch failed: {message}")
+        raise RuntimeError(message) from exc
+
     if not path.exists():
         candidates = sorted(directory.glob(f"remote-*-{info.get('id', '')}.*"), key=lambda p: p.stat().st_size, reverse=True)
         if not candidates:
@@ -335,15 +338,18 @@ async def produce(
 
     def runner(active: Job) -> Dict[str, Any]:
         resolved = list(clip_paths)
-        for remote in remote_urls:
+        failures: List[str] = []
+        for remote_url in remote_urls:
             if len(resolved) >= 12:
                 break
             try:
-                resolved.append(str(download_remote(remote, UPLOAD_DIR, active)))
+                resolved.append(str(download_remote(remote_url, UPLOAD_DIR, active)))
             except Exception as exc:  # noqa: BLE001 - keep going with other clips
-                active.log(f"Clip URL failed ({remote}): {exc}")
+                failures.append(f"{remote_url} → {exc}")
+                active.log(f"Clip URL failed · {exc}")
         if not resolved:
-            raise RuntimeError("No clips could be resolved")
+            detail = failures[0] if failures else "no clip files or URLs were supplied"
+            raise RuntimeError(f"No clips could be resolved — {detail}")
         active.begin("prepare", f"{len(resolved)} clip(s) ready")
         return render_plan(
             active,

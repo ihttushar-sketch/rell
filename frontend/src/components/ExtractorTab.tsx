@@ -353,7 +353,9 @@ export function ExtractorTab() {
               label="Reference URL"
               hint={
                 engine === "server"
-                  ? "YouTube · Instagram · TikTok · Facebook — fetched by yt-dlp on the production node."
+                  ? `YouTube · Instagram · TikTok · Facebook — fetched by yt-dlp${
+                      capabilities?.ytdlp_version ? ` ${capabilities.ytdlp_version}` : ""
+                    } on the production node. If the node's network is filtered, upload the file instead.`
                   : "Connect the production node to ingest remote URLs; Studio Lite works with local files."
               }
             >
