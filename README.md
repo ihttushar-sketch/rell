@@ -139,6 +139,7 @@ curl -X POST localhost:8000/api/produce \
 ```
 
 Full reference: [`docs/API.md`](docs/API.md).
+বাংলায় ধাপে ধাপে ব্যবহারবিধি: [`docs/USAGE.bn.md`](docs/USAGE.bn.md).
 
 ---
 
